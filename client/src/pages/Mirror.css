@@ -1,0 +1,262 @@
+.mirror-page {
+  position: relative;
+  isolation: isolate;
+  min-height: calc(100vh - 76px);
+  overflow: hidden;
+  color: var(--ink);
+  background: #090b0d;
+}
+
+.mirror-backdrops {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mirror-backdrop {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.25s cubic-bezier(0.22, 0.68, 0.26, 1);
+}
+
+.mirror-backdrop.is-active {
+  opacity: 1;
+}
+
+.mirror-backdrop-sun {
+  background:
+    radial-gradient(
+      ellipse at 50% 46%,
+      rgba(219, 164, 79, 0.32),
+      transparent 56%
+    ),
+    linear-gradient(135deg, #18120b 0%, #21170d 48%, #0c0d0d 100%);
+}
+
+.mirror-backdrop-rain {
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      rgba(137, 171, 194, 0.28),
+      transparent 58%
+    ),
+    linear-gradient(135deg, #0c1115 0%, #17212a 48%, #0a0d10 100%);
+}
+
+.mirror-backdrop-night {
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      rgba(89, 62, 112, 0.34),
+      transparent 58%
+    ),
+    linear-gradient(135deg, #100d15 0%, #17111f 48%, #08090d 100%);
+}
+
+.mirror-content {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, 100%);
+  min-height: inherit;
+  margin: 0 auto;
+  padding: clamp(55px, 8vw, 100px) clamp(20px, 5.5vw, 78px) 90px;
+}
+
+.mirror-intro {
+  max-width: 720px;
+  margin: 0 auto 42px;
+  text-align: center;
+}
+
+.mirror-intro h1 {
+  margin: 12px 0 13px;
+  font: 400 clamp(42px, 7vw, 76px) / 0.98 var(--serif);
+  letter-spacing: -0.025em;
+}
+
+.mirror-intro p {
+  margin: 0;
+  color: rgba(245, 239, 229, 0.72);
+  font-size: 13px;
+  letter-spacing: 0.035em;
+}
+
+.mirror-mood-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.mirror-mood-card {
+  position: relative;
+  display: flex;
+  min-height: 190px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  overflow: hidden;
+  padding: 24px 25px;
+  color: var(--ink);
+  text-align: left;
+  background: rgba(8, 10, 12, 0.34);
+  border: 1px solid rgba(232, 208, 167, 0.24);
+  cursor: pointer;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 0.68, 0.26, 1),
+    background 0.45s ease,
+    border-color 0.45s ease;
+  backdrop-filter: blur(8px);
+}
+
+.mirror-mood-card:hover,
+.mirror-mood-card.is-selected {
+  transform: translateY(-3px);
+  background: rgba(13, 14, 15, 0.52);
+  border-color: rgba(232, 208, 167, 0.62);
+}
+
+.mirror-mood-card:focus-visible {
+  outline: 1px solid var(--gold-light);
+  outline-offset: 4px;
+}
+
+.mirror-mood-icon {
+  margin-bottom: 22px;
+  color: var(--gold-light);
+  transition:
+    transform 0.45s ease,
+    color 0.45s ease;
+}
+
+.mirror-mood-card:hover .mirror-mood-icon,
+.mirror-mood-card.is-selected .mirror-mood-icon {
+  transform: translateY(-2px);
+  color: #fff0ce;
+}
+
+.mirror-mood-title {
+  color: #e5c158;
+  font:
+    400 2.5rem / 1.1 "Great Vibes",
+    cursive;
+  letter-spacing: 0;
+}
+
+.mirror-mood-translation {
+  margin-top: 8px;
+  color: rgba(245, 239, 229, 0.62);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
+.mirror-mood-mark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(
+    135deg,
+    transparent 49.3%,
+    rgba(232, 208, 167, 0.12) 50%,
+    transparent 50.7%
+  );
+  opacity: 0.8;
+}
+
+.mirror-result {
+  display: flex;
+  min-height: 390px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px 0;
+  text-align: center;
+  scroll-margin-top: 24px;
+}
+
+.mirror-bottle-frame {
+  display: grid;
+  width: min(250px, 68vw);
+  height: 280px;
+  place-items: center;
+}
+
+.mirror-bottle {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 16px 34px rgba(0, 0, 0, 0.42));
+  animation: mirror-bottle-reveal 1.15s cubic-bezier(0.22, 0.68, 0.26, 1) both;
+}
+
+.mirror-scent-name {
+  margin-top: 20px;
+  color: var(--gold-light);
+  font-size: 9px;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+}
+
+.mirror-poem {
+  max-width: 530px;
+  margin: 13px auto 0;
+  color: #e5c158;
+  background: transparent;
+  border: 0;
+  font:
+    400 3rem / 1.2 "Great Vibes",
+    cursive;
+}
+
+@keyframes mirror-bottle-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 760px) {
+  .mirror-mood-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .mirror-mood-card {
+    min-height: 140px;
+    padding: 21px 22px;
+  }
+
+  .mirror-mood-icon {
+    margin-bottom: 14px;
+  }
+
+  .mirror-result {
+    min-height: 350px;
+    padding-top: 38px;
+  }
+
+  .mirror-bottle-frame {
+    height: 230px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mirror-backdrop,
+  .mirror-mood-card,
+  .mirror-mood-icon {
+    transition-duration: 0.01ms;
+  }
+
+  .mirror-bottle {
+    animation-duration: 0.01ms;
+  }
+}

@@ -1,0 +1,49 @@
+.about-copy p {
+  margin: 0 0 24px;
+  color: #e5c158;
+  font:
+    400 2.25rem/1.35 "Great Vibes",
+    cursive;
+}
+
+.about-narration {
+  display: flex;
+  align-items: center;
+  margin: 12px 0 32px;
+}
+
+.about-narration-button {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 18px;
+  border: 1px solid rgba(229, 193, 88, 0.48);
+  background: rgba(229, 193, 88, 0.06);
+  color: #e5c158;
+  font:
+    500 10px/1 Arial,
+    sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.about-narration-button:hover {
+  border-color: #e5c158;
+  background: rgba(229, 193, 88, 0.13);
+}
+
+.about-narration-button:focus-visible {
+  outline: 2px solid #e5c158;
+  outline-offset: 3px;
+}
+
+@media (max-width: 740px) {
+  .about-copy p {
+    font-size: 2rem;
+  }
+}

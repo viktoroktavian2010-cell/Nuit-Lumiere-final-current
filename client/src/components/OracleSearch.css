@@ -1,0 +1,159 @@
+.oracle-search-band {
+  position: relative;
+  z-index: 12;
+  display: flex;
+  justify-content: center;
+  width: min(1380px, 100%);
+  margin: 0 auto;
+  padding: 4px clamp(20px, 5.5vw, 78px) 22px;
+}
+
+.oracle-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(100%, 1100px);
+  border-bottom: 1px solid rgba(229, 193, 88, 0.42);
+}
+
+.oracle-search::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(229, 193, 88, 0.12),
+    #e5c158,
+    rgba(229, 193, 88, 0.12)
+  );
+  background-size: 200% 100%;
+  animation: oracle-gold-shimmer 2.8s linear infinite;
+  content: "";
+  pointer-events: none;
+}
+
+.oracle-search input {
+  width: 100%;
+  height: 66px;
+  padding: 5px 4px 9px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #e5c158;
+  caret-color: #e5c158;
+  font:
+    400 2rem/1.1 "Great Vibes",
+    cursive;
+}
+
+.oracle-search input::placeholder {
+  color: rgba(229, 193, 88, 0.86);
+  opacity: 1;
+  font:
+    400 2rem/1.1 "Great Vibes",
+    cursive;
+}
+
+.oracle-search input::-webkit-search-cancel-button {
+  filter: sepia(1) saturate(4);
+}
+
+.oracle-search button {
+  display: grid;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: #e5c158;
+}
+
+.oracle-results {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 8px);
+  right: 0;
+  left: 0;
+  overflow: hidden;
+  border: 1px solid rgba(229, 193, 88, 0.42);
+  background: rgba(8, 10, 12, 0.97);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.48);
+}
+
+.oracle-results a {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 11px 14px;
+  color: #e5c158;
+  font:
+    400 20px/1.2 "Great Vibes",
+    cursive;
+}
+
+.oracle-results a:hover,
+.oracle-results a:focus-visible {
+  background: rgba(229, 193, 88, 0.1);
+}
+
+.oracle-results small {
+  color: rgba(229, 193, 88, 0.72);
+  font:
+    10px/1.2 Arial,
+    sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@keyframes oracle-gold-shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+@media (max-width: 740px) {
+  .oracle-search input,
+  .oracle-search input::placeholder {
+    font-size: clamp(1.5rem, 7vw, 1.85rem);
+  }
+}
+
+@media (max-width: 430px) {
+  .oracle-search-band {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .oracle-search {
+    gap: 4px;
+  }
+
+  .oracle-search input,
+  .oracle-search input::placeholder {
+    font-size: clamp(1.25rem, 7vw, 1.65rem);
+  }
+
+  .oracle-search input {
+    height: 58px;
+  }
+
+  .oracle-search button {
+    flex-basis: 32px;
+    width: 32px;
+    height: 36px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oracle-search::after {
+    animation: none;
+  }
+}
